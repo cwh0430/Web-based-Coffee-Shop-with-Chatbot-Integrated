@@ -1,0 +1,252 @@
+/* chat open and close */
+.chat-bar-open {
+    text-align: center;
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+}
+.chat-bar-open i {
+    font-size: 30px;
+    transform: none !important;
+    box-shadow: none !important;
+    font-weight: 500 !important;
+    margin-top: 8px;
+}
+
+.chat-bar-close {
+    display: none;
+    text-align: center;
+    position: fixed;
+    bottom: 20px;
+    right: 50px;
+}
+.chat-bar-open .close,
+.chat-bar-close .close {
+    background-color: white !important;
+    width: 70px;
+    cursor: pointer;
+    height: 70px;
+    padding: 15px;
+    border-radius: 50%;
+    border-style: none;
+    vertical-align: middle;
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 6px, rgb(0 0 0 / 20%) 0px 2px 24px;
+    opacity: 1; /* Add this line */
+}
+.chat-bar-close .close {
+    width: 56px;
+    height: 56px;
+    padding: 12px;
+}
+.chat-bar-open .close img {
+    height: 38px;
+}
+.chat-bar-close .close i {
+    font-size: 30px;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* chat window 2 */
+.chat-window {
+    display: none;
+    width: 332px;
+    height: 400px;
+    border-radius: 10px;
+    background-color: #fff;
+    position: fixed;
+    bottom: 90px;
+    right: 50px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 6px, rgb(0 0 0 / 20%) 0px 2px 24px;
+}
+
+.chat-window-header {
+    font-weight: 400;
+    font-size: 20px;
+    padding: 7px 0;
+    border-radius: 9px 9px 0 0;
+    justify-content: center;
+    border-bottom: 1px solid lightgray;
+}
+
+.chat-window-header p {
+    text-align: center;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.message-box {
+    height: 285px;
+    width: 100%;
+    padding: 16px;
+    overflow: auto;
+}
+
+.message-box .first-chat {
+    display: inline-block;
+}
+
+.message-box .first-chat .circle {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    float: left;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.message-box .first-chat #circle-mar {
+    margin-top: 5px;
+}
+
+.message-box .first-chat p {
+    font-size: 12px;
+    overflow-wrap: break-word;
+}
+.message-box .first-chat p {
+    width: 200px;
+    float: left;
+    background-color: rgb(233, 232, 232);
+    padding: 12px;
+    margin: 0;
+    border-radius: 10px;
+    color: #000;
+}
+
+.message-box .second-chat {
+    width: 200px;
+    float: right;
+    background-color: #242323;
+    padding: 10px;
+    margin: 14px 0px;
+    border-radius: 5px;
+    color: #ffffff;
+}
+.message-box .second-chat p {
+    font-size: 12px;
+    overflow-wrap: break-word;
+    margin: 0px 5px;
+}
+
+.chat-window .input-box {
+    position: absolute;
+    font-size: 12px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0px 15px;
+    padding-bottom: 18px;
+    padding-top: 18px;
+    border-top: 1px solid lightgray;
+    width: 100%;
+}
+.chat-window .input-box .write-reply {
+    float: left;
+    width: 90%;
+}
+.chat-window .input-box .write-reply input[type="text"] {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+}
+.chat-window .input-box .send-button {
+    float: right;
+    border: none;
+    outline: none;
+    width: 10%;
+}
+.chat-window .input-box .send-button button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+}
+.chat-window .input-box .send-button button i {
+    color: gray;
+    font-size: 20px;
+    font-weight: bold;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 400px) {
+    .chat-window {
+        right: 14px;
+        bottom: 87px;
+        top: 18px;
+        height: 100px;
+    }
+    .chat-bar-open {
+        bottom: 20px;
+        right: 21px;
+    }
+    .chat-bar-close {
+        bottom: 10px;
+        right: 25px;
+    }
+}
+
+.jumping-dots span {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    animation: jump 1s infinite;
+    display: inline-block;
+}
+
+.jumping-dots .dot-1 {
+    background-color: lightgray;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 3px;
+    animation-delay: 200ms;
+}
+
+.jumping-dots .dot-2 {
+    background-color: lightgray;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 3px;
+    animation-delay: 400ms;
+}
+
+.jumping-dots .dot-3 {
+    background-color: lightgray;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 3px;
+    animation-delay: 600ms;
+}
+
+@keyframes jump {
+    0% {
+        bottom: 0px;
+    }
+    20% {
+        bottom: 5px;
+    }
+    40% {
+        bottom: 0px;
+    }
+}

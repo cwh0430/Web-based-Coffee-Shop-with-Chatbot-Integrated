@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap");
+
+#app {
+    font-family: "Oswald", sans-serif !important;
+}
+
+.shop-dropdown:hover > .dropdown-hover-menu,
+.cart-dropdown:hover > .dropdown-hover-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.navbar {
+    padding: 0 !important;
+}
+
+.navbar-nav a {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.navbar .navbar-nav .nav-expanded-item {
+    position: relative;
+}
+
+.navbar-brand {
+    font-weight: 300;
+    font-size: 25px !important;
+}
+
+.nav-expanded-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: 300;
+    font-size: 15px !important;
+    letter-spacing: 0.7px;
+}
+
+.nav-expanded-item a:hover {
+    text-decoration: none;
+}
+.navbar .navbar-nav .nav-expanded-item::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    content: "";
+    background-color: black;
+    width: 0;
+    height: 4px;
+    transition: width 0.5s;
+}
+.navbar .navbar-nav .nav-expanded-item:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 1199px) {
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    background-color: hsla(0, 0%, 100%, 0.6);
+    backdrop-filter: blur(30px);
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    position: relative;
+}
+
+.sidebar a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.openbtn {
+    font-size: 20px;
+    padding: 0;
+    cursor: pointer;
+    border: none;
+    background-color: white;
+    height: 100%;
+}
+
+#sidebarList {
+    transition: margin-left 0.5s;
+    padding: 0px;
+}
+
+.product-cart-icon,
+.beverage-cart-icon {
+    box-shadow: none !important;
+    transform: none !important;
+    font-size: 18px;
+}
+
+.fa-xmark {
+    font-size: 25px;
+}
+
+.fa-xmark:hover {
+    box-shadow: none !important;
+    transform: none !important;
+    color: #5b5959 !important;
+}
+
+.cart-badge {
+    top: 30%;
+    left: 87%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.dropdown-cart-menu {
+    min-width: 300px !important;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+    border: none !important;
+}
+
+.cart-items {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.empty-msg {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.dropdown-cart-item {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+.dropdown-cart-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Custom CSS */
+.product-cart-modal,
+.beverage-cart-modal {
+    list-style: none;
+    padding: 0;
+}
+.btn-view-cart {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.cart-modal-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Adjust as needed for spacing between items */
+}
+
+.cart-modal-item img {
+    width: 100%; /* Set the desired height for the image */
+    height: auto;
+    margin-right: 10px; /* Adjust as needed for spacing between image and details */
+}
+
+.cart-item-img-width {
+    width: 70px;
+    height: 70px;
+}
+
+.cart-item-name {
+    font-size: 17px;
+}
+.item-price,
+.item-quantity {
+    font-size: 12px;
+}
+
+.item-details {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    width: 50%;
+}
+
+.item-details .item-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%; /* To make price and quantity span fill the available space */
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+}
+
+@media (max-width: 1199px) {
+    .navbar-nav {
+        text-align: center !important;
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    .cart-badge {
+        top: 5%;
+        left: 120%;
+    }
+
+    #app {
+        min-width: 400px;
+    }
+}

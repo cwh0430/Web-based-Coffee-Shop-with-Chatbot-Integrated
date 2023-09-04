@@ -1,0 +1,98 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap");
+
+body {
+    font-family: "Oswald", sans-serif !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type="number"] {
+    width: 40px;
+    text-align: center;
+}
+
+.quantity-label {
+    padding-top: 10px;
+}
+
+.fa-minus,
+.fa-plus {
+    padding-bottom: 10px;
+}
+
+.fa-minus:hover,
+.fa-plus:hover,
+.fa-xmark.fa-xmark:hover {
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.fa-xmark {
+    font-size: 25px;
+}
+
+.float-end {
+    margin-right: 45px;
+}
+
+.coupon {
+    margin-right: 5px;
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 5px 10px;
+    outline: none;
+}
+
+.coupon-btn {
+    width: 110px;
+    height: 40px;
+    background-color: black;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+.coupon-btn-text {
+    display: inline-block;
+    color: white;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.coupon-btn-text::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: white;
+    transition: width 300ms;
+}
+
+.coupon-btn:hover .coupon-btn-text::after {
+    width: 100%;
+}
+
+.footer-font {
+    font-size: 20px;
+}
+
+.btn-md {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 15px;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+    transition: text-indent 0.4s 0.4s ease;
+    text-indent: -100%;
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}

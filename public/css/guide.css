@@ -1,0 +1,38 @@
+.brew-img-box {
+    position: relative;
+}
+
+.brew-name {
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(249, 247, 247, 0.7);
+    width: 348px;
+    font-size: 20px;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.5s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.brew-img-box:hover .brew-name {
+    opacity: 1;
+}
+
+.recipe-img-box {
+    position: relative;
+}
+
+.recipe-img-box img {
+    width: 100%;
+    object-fit: cover;
+    background-color: rgb(230, 218, 202);
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 60px !important;
+}
+
+.recipe-name {
+    position: absolute;
+    bottom: 0;
+    width: 348px;
+    font-size: 15px;
+}

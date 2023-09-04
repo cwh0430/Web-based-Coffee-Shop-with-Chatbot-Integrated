@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;1,400;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,600;1,200;1,400;1,500;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap");
+
+body {
+    font-family: "Roboto", sans-serif !important;
+    line-height: 1.8 !important;
+}
+
+.slide-1-caption {
+    font-family: "Oswald", sans-serif !important;
+    font-weight: 700;
+    font-size: 50px;
+    letter-spacing: 1px;
+    line-height: 1 !important;
+    animation: 1.4s slideUp ease;
+}
+
+.slide-desc {
+    font-family: "Open Sans", sans-serif !important;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    animation: 2.1s slideUp ease;
+}
+
+.slide-2-caption {
+    font-family: "Oswald", sans-serif !important;
+    font-weight: 700;
+    font-size: 50px;
+    letter-spacing: 1px;
+    line-height: 1 !important;
+    animation: 1.4s slideUp ease;
+}
+
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(250px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.service-title {
+    font-family: "Oswald", sans-serif !important;
+    font-weight: 400 !important;
+    letter-spacing: 1px;
+    padding-bottom: 6px;
+}
+
+.service-caption {
+    font-family: "Oswald", sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 25px;
+    padding-bottom: 6px;
+}
+
+.nav-link {
+    text-decoration: none;
+}
+.nav-link:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    z-index: 2;
+    position: relative;
+}
+
+.btn-readmore {
+    padding: 5px 20px;
+    cursor: pointer;
+    border: 1px solid white;
+    background-color: transparent;
+    text-align: center !important;
+    transition: 2s !important;
+    color: white !important;
+    font-family: "Monomaniac One";
+    font-weight: 400 !important;
+    width: 20%;
+    font-size: 20px;
+    animation: 2.5s slideUp ease;
+    display: block;
+    margin: 10px auto;
+}
+
+.btn-readmore:hover {
+    background-color: white;
+    transition: 2s;
+    color: black !important;
+    text-decoration: none;
+}
+
+.service-intro {
+    margin-bottom: 40px;
+}
+
+.service-intro .divider {
+    background-image: linear-gradient(
+        to right,
+        #2bc0e4 0%,
+        #eaecc6 51%,
+        #2bc0e4 100%
+    );
+
+    width: 300px;
+    height: 5px;
+    margin: 5px auto 20px;
+
+    animation: gradient 5s ease-in-out infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 130px 0;
+    }
+}
+
+.coffee-cup {
+    width: 50px;
+    height: 70px;
+    margin-bottom: 20px;
+}
+
+.coffee-bean {
+    width: 60px;
+    height: 70px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    width: 40% !important;
+}
+
+.btn-view {
+    background-color: #fff;
+    text-align: center !important;
+    transition: 1s !important;
+    background-size: 200% auto;
+    border-radius: 50px !important;
+    color: #80471c !important;
+    border: 1px solid #80471c !important;
+}
+
+.btn-view:hover {
+    background-color: #80471c !important;
+    color: #fff !important;
+    transition: 1s !important;
+    text-align: center !important;
+    background-position: left center !important;
+}
+
+.item-background {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 90vh;
+}
+
+.carousel:hover .carousel-control-next,
+.carousel:hover .carousel-control-prev {
+    opacity: 1;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.carousel-control-next i,
+.carousel-control-prev i {
+    border-bottom: 0;
+    font-size: 40px;
+    color: rgb(234, 241, 248);
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.carousel-control-next:hover i,
+.carousel-control-prev:hover i {
+    color: aliceblue;
+}
