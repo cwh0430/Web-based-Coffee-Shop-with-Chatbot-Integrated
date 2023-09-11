@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\GuidingController;
 use App\Models\ProductCart;
+use App\Models\RecipeGuide;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BeverageController;
@@ -66,7 +68,8 @@ Route::get("/cancel", [PaymentController::class, 'cancel'])->name('checkout.canc
 
 Route::get('/embeddings', [EmbeddingController::class, 'extractDataFromCSV']);
 Route::post('/embeddings', [EmbeddingController::class, 'store']);
-//filter beverage
-Route::get('/guide', function () {
-    return view('guides.guiding');
-});
+
+Route::get('/guide', [GuidingController::class, 'index']);
+
+Route::get('/recipedetail/{id}', [GuidingController::class, 'recipeShow']);
+Route::get('/brewdetail/{id}', [GuidingController::class, 'brewShow']);

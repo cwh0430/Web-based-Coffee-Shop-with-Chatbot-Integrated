@@ -17,11 +17,7 @@ return new class extends Migration {
             $table->json('using_tools');
             $table->json('instructions');
             $table->json('tips')->nullable();
-            $table->foreignId('homebrew_product_id')->references('id')->on('homebrew_products')->onDelete('cascade')->nullable();
-            $table->foreignId('mechanic_id')->references('id')->on('mechanics')->onDelete('cascade');
-            $table->string('cover_img');
-            $table->string('working_img');
-            $table->string('final_product_img');
+            $table->string('img');
             $table->timestamps();
         });
     }

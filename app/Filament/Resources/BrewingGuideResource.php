@@ -33,7 +33,7 @@ class BrewingGuideResource extends Resource
                             Forms\Components\TextInput::make('name')
                                 ->required()
                                 ->maxLength(191),
-                            Forms\Components\FileUpload::make('cover_img')->label('Front Cover Thumbnail')
+                            Forms\Components\FileUpload::make('img')->label('Thumbnail')
                                 ->required(),
                         ]),
 
@@ -44,13 +44,6 @@ class BrewingGuideResource extends Resource
                                 'codeBlock',
                                 'link',
                             ]),
-
-                        Forms\Components\Grid::make(2)->schema([
-                            Forms\Components\FileUpload::make('working_img')->label('Brewing Process Thumbnail')
-                                ->required(),
-                            Forms\Components\FileUpload::make('final_product_img')->label('Final Product Thumbnail')
-                                ->required(),
-                        ]),
 
                     ]),
 
@@ -80,17 +73,8 @@ class BrewingGuideResource extends Resource
                             ->label('Tips(Optional)')
                             ->createItemButtonLabel('Add More Tips')
                             ->schema([
-                                Forms\Components\TextInput::make('brewing_tip'),
+                                Forms\Components\TextInput::make('tip'),
                             ]),
-
-                        Forms\Components\Grid::make(2)
-                            ->schema([
-                                Forms\Components\Select::make('homebrew_product_id')->label('Recommended Coffee')->relationship('homebrewProduct', 'name')
-                                    ->required(),
-                                Forms\Components\Select::make('mechanic_id')->label('Recommended Machines')->relationship('mechanic', 'name')
-                                    ->required(),
-                            ]),
-
                     ])
 
             ]);
@@ -101,7 +85,7 @@ class BrewingGuideResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\ImageColumn::make('cover_img')->label('Front Cover Thumbnail'),
+                Tables\Columns\ImageColumn::make('img')->label('Thumbnail'),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->since(),
             ])

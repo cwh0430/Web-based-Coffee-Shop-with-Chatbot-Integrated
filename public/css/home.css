@@ -1,15 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;1,400;1,500;1,600&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,600;1,200;1,400;1,500;1,600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap");
 
-body {
-    font-family: "Roboto", sans-serif !important;
-    line-height: 1.8 !important;
+.home-body {
+    min-width: 375px !important;
 }
 
-.slide-1-caption {
+.slide-caption {
     font-family: "Oswald", sans-serif !important;
     font-weight: 700;
     font-size: 50px;
@@ -22,17 +19,8 @@ body {
     font-family: "Open Sans", sans-serif !important;
     font-style: italic;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 20px;
     animation: 2.1s slideUp ease;
-}
-
-.slide-2-caption {
-    font-family: "Oswald", sans-serif !important;
-    font-weight: 700;
-    font-size: 50px;
-    letter-spacing: 1px;
-    line-height: 1 !important;
-    animation: 1.4s slideUp ease;
 }
 
 @keyframes slideUp {
@@ -58,14 +46,6 @@ body {
     font-weight: 400 !important;
     font-size: 25px;
     padding-bottom: 6px;
-}
-
-.nav-link {
-    text-decoration: none;
-}
-.nav-link:hover {
-    text-decoration: underline;
-    color: black;
 }
 
 section {
@@ -191,4 +171,96 @@ section {
 .carousel-control-next:hover i,
 .carousel-control-prev:hover i {
     color: aliceblue;
+}
+
+@media (max-width: 854px) {
+    .slide-caption {
+        font-family: "Oswald", sans-serif !important;
+        font-weight: 700;
+        font-size: 30px;
+        letter-spacing: 1px;
+        line-height: 1 !important;
+        animation: 1.4s slideUp ease;
+    }
+
+    .slide-desc {
+        font-family: "Open Sans", sans-serif !important;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 20px;
+        animation: 2.1s slideUp ease;
+    }
+
+    .btn-readmore {
+        padding: 5px 20px;
+        cursor: pointer;
+        border: 1px solid white;
+        background-color: transparent;
+        text-align: center !important;
+        transition: 2s !important;
+        color: white !important;
+        font-family: "Monomaniac One";
+        font-weight: 400 !important;
+        width: 80%;
+        font-size: 15px;
+        animation: 2.5s slideUp ease;
+        display: block;
+        margin: 10px auto;
+    }
+
+    .item-background {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        min-height: 50vh;
+    }
+}
+
+@media (max-width: 500px) {
+    .slide-caption {
+        font-family: "Oswald", sans-serif !important;
+        font-weight: 700;
+        font-size: 20px;
+        letter-spacing: 1px;
+        line-height: 1 !important;
+        animation: 1.4s slideUp ease;
+    }
+
+    .slide-desc {
+        font-family: "Open Sans", sans-serif !important;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 10px;
+        animation: 2.1s slideUp ease;
+    }
+
+    .btn-readmore {
+        padding: 5px 20px;
+        cursor: pointer;
+        border: 1px solid white;
+        background-color: transparent;
+        text-align: center !important;
+        transition: 2s !important;
+        color: white !important;
+        font-family: "Monomaniac One";
+        font-weight: 400 !important;
+        width: 80%;
+        font-size: 10px;
+        animation: 2.5s slideUp ease;
+        display: block;
+        margin: 10px auto;
+    }
+
+    .item-background {
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        min-height: 50vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .responsive-space {
+        margin-bottom: 70px;
+    }
 }

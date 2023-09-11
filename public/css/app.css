@@ -10,6 +10,15 @@
     margin-top: 0;
 }
 
+.responsive-click a:active {
+    text-decoration: none !important;
+}
+
+.cart-icon-span {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+
 .navbar {
     padding: 0 !important;
 }
@@ -237,6 +246,6 @@
     }
 
     #app {
-        min-width: 400px;
+        min-width: 375px;
     }
 }

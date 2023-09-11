@@ -63,7 +63,7 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item dropdown d-xl-none text-muted">
+                        <li class="nav-item dropdown d-xl-none text-muted responsive-click">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="collapse"
                                 data-bs-target="#accordionNavbar" aria-expanded="false" aria-controls="accordionNavbar">
                                 Shop
@@ -85,12 +85,25 @@
                             </div>
                         </li>
 
+                        <li class="nav-item dropdown d-none d-xl-block shop-dropdown nav-expanded-item">
+                            <a class="nav-link" href="/guide" aria-expanded="false">
+                                Guides
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown d-xl-none text-muted">
+                            <a class="nav-link" href="/guide" role="button">
+                                Guides
+                            </a>
+
+                        </li>
+
                         <li class="nav-item d-none dropdown cart-dropdown d-xl-block me-3">
-                            <a class="nav-link position-relative" href="#" aria-expanded="false">
+                            <span class="nav-link position-relative cart-icon-span" aria-expanded="false">
 
                                 <i class="fa-solid fa-cart-shopping product-cart-icon"></i>
                                 <span id="product-cart-count"
-                                    class="position-absolute translate-middle badge rounded-pill bg-danger cart-badge"></span></a>
+                                    class="position-absolute translate-middle badge rounded-pill bg-danger cart-badge"></span></span>
 
                             <div class="dropdown-menu dropdown-menu-start dropdown-cart-menu dropdown-hover-menu p-4"
                                 aria-labelledby="cartDropdown" id="cartDropdownItems">
@@ -111,11 +124,11 @@
                         </li>
 
                         <li class="nav-item d-none dropdown cart-dropdown d-xl-block ml-3">
-                            <a class="nav-link position-relative" href="#" aria-expanded="false">
+                            <span class="nav-link position-relative cart-icon-span" aria-expanded="false">
 
                                 <i class="fa-solid fa-glass-water beverage-cart-icon"></i>
                                 <span id="beverage-cart-count"
-                                    class="position-absolute translate-middle badge rounded-pill bg-danger cart-badge"></span></a>
+                                    class="position-absolute translate-middle badge rounded-pill bg-danger cart-badge"></span></span>
 
                             <div class="dropdown-menu dropdown-menu-start dropdown-cart-menu dropdown-hover-menu p-4"
                                 aria-labelledby="cartDropdown" id="cartDropdownItems">
@@ -135,7 +148,7 @@
                     </ul>
 
                     <!-- Navbar Brand (Centered) -->
-                    <a class="navbar-brand d-none d-xl-block" href="{{ url('/') }}">
+                    <a class="navbar-brand d-none d-xl-block" style="margin-right: 100px;" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
 
@@ -159,6 +172,7 @@
                                     class="fa-solid fa-xmark text-muted"></i></button>
                             <a href="{{ route('login') }}">{{ __('Login') }}</a>
                             <a href="{{ route('register') }}">{{ __('Register') }}</a>
+
                         </div>
 
                         <div id="sideBarList" class="d-none d-xl-block">
@@ -166,7 +180,8 @@
                                     class="navbar-toggler-icon"></span></button>
                         </div>
                         @else
-                        <li class="nav-item dropdown nav-expanded-item">
+
+                        <li class="nav-item dropdown nav-expanded-item d-none d-xl-block shop-dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
@@ -181,8 +196,39 @@
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
+
+                                <a href="" class="dropdown-item">
+                                    View My Orders
+                                </a>
                             </div>
                         </li>
+
+                        <li class="nav-item dropdown d-xl-none text-muted  responsive-click">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="collapse"
+                                data-bs-target="#userAccordionNavbar" aria-expanded="false"
+                                aria-controls="accordionNavbar">
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <!-- Accordion Content -->
+                            <div class="collapse navbar-collapse" id="userAccordionNavbar">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">View My Orders</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
                         @endguest
                     </ul>
                 </div>

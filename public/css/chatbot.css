@@ -1,4 +1,8 @@
 /* chat open and close */
+body {
+    min-width: 332px;
+}
+
 .chat-bar-open {
     text-align: center;
     position: fixed;
@@ -50,7 +54,7 @@
 /* chat window 2 */
 .chat-window {
     display: none;
-    width: 332px;
+    min-width: 332px;
     height: 400px;
     border-radius: 10px;
     background-color: #fff;
@@ -187,22 +191,6 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 400px) {
-    .chat-window {
-        right: 14px;
-        bottom: 87px;
-        top: 18px;
-        height: 100px;
-    }
-    .chat-bar-open {
-        bottom: 20px;
-        right: 21px;
-    }
-    .chat-bar-close {
-        bottom: 10px;
-        right: 25px;
-    }
-}
 
 .jumping-dots span {
     position: relative;

@@ -9,8 +9,14 @@ class RecipeGuide extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'desc', 'ingredient', 'instructions', 'tips', 'homebrew_product_id', 'img'];
 
+    protected $fillable = ['name', 'desc', 'ingredients', 'instructions', 'tips', 'img'];
+
+    protected $casts = [
+        'ingredients' => 'json',
+        'instructions' => 'json',
+        'tips' => 'json',
+    ];
     public function homebrewProduct()
     {
         return $this->belongsTo(HomebrewProduct::class);

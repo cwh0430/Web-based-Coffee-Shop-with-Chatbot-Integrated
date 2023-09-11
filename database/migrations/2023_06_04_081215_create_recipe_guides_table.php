@@ -13,11 +13,10 @@ return new class extends Migration {
         Schema::create('recipe_guides', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('desc');
-            $table->json('ingredient');
+            $table->longText('desc');
+            $table->json('ingredients');
             $table->json('instructions');
             $table->json('tips')->nullable();
-            $table->foreignId('homebrew_product_id')->references('id')->on('homebrew_products')->onDelete('cascade');
             $table->string('img');
             $table->timestamps();
         });

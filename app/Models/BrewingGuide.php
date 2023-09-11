@@ -9,7 +9,7 @@ class BrewingGuide extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'desc', 'using_tools', 'instructions', 'tips', 'homebrew_product_id', 'mechanic_id', 'cover_img', 'working_img', 'final_product_img'];
+    protected $fillable = ['name', 'desc', 'using_tools', 'instructions', 'tips', 'img'];
 
     protected $casts = [
         'using_tools' => 'json',

@@ -2,16 +2,13 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\RecipeGuideResource\Pages;
-use App\Filament\Resources\RecipeGuideResource\RelationManagers;
-use App\Models\RecipeGuide;
 use Filament\Forms;
-use Filament\Resources\Form;
-use Filament\Resources\Resource;
-use Filament\Resources\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\RecipeGuide;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\Resource;
+use App\Filament\Resources\RecipeGuideResource\Pages;
 
 class RecipeGuideResource extends Resource
 {
@@ -20,12 +17,10 @@ class RecipeGuideResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-collection';
     protected static ?string $navigationGroup = 'Guiding Materials Manage';
 
-
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-
                 Forms\Components\Section::make('Recipe Guide Information')
                     ->description('General information of the guide')
                     ->collapsible()
@@ -48,32 +43,31 @@ class RecipeGuideResource extends Resource
                                 'link',
                             ]),
 
+
+
                     ]),
-
-
 
                 Forms\Components\Section::make('Ingredients and Tips Information')
                     ->description('Ingredients, instructions, tips(optional), and recommended homebrew product in this recipe guide')
                     ->collapsible()
                     ->schema([
-                        Forms\Components\Repeater::make('ingredients')->label('Ingredient')
+                        Forms\Components\Repeater::make('ingredients')->label('Ingredients Needed')
                             ->collapsible()
                             ->required()
                             ->minItems(1)
                             ->columns(3)
-                            ->createItemButtonLabel('More Ingredients')
                             ->schema([
-                                Forms\Components\TextInput::make('ingredient.quantity')->required()->label('Quantity')->placeholder('4')
+                                Forms\Components\TextInput::make('ingredientInfo.quantity')->required()->label('Quantity')->placeholder('4')
                                     ->numeric()
                                     ->integer()
                                     ->minValue(1),
-                                Forms\Components\TextInput::make('ingredient.unit')->required()->label('Unit')->placeholder('oz'),
-                                Forms\Components\TextInput::make('ingredient.item')->required()->label('Item')->placeholder('coffee'),
-                            ]),
+                                Forms\Components\TextInput::make('ingredientInfo.unit')->required()->label('Unit')->placeholder('oz'),
+                                Forms\Components\TextInput::make('ingredientInfo.item')->required()->label('Item')->placeholder('coffee'),
+                            ])
+                            ->createItemButtonLabel('More Ingredients'),
 
                         Forms\Components\Repeater::make('instructions')
-                            ->collapsible()
-                            ->minItems(2)
+                            ->minItems(1)
                             ->required()
                             ->createItemButtonLabel('More Steps')
                             ->schema([
@@ -89,15 +83,7 @@ class RecipeGuideResource extends Resource
                             ->schema([
                                 Forms\Components\TextInput::make('recipe_tip'),
                             ]),
-
-                        Forms\Components\Select::make('homebrew_product_id')->label('Recommended Homebrew Product')->relationship('homebrewProduct', 'name')
-                            ->required(),
-
                     ]),
-
-
-
-
             ]);
     }
 

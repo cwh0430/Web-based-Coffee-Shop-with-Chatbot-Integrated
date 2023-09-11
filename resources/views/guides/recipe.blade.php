@@ -1,22 +1,16 @@
-<div class="container mt-5">
+<div class="container-fluid mt-5">
     <div class="row mb-5">
-        <div class="col-4 recipe-img-box">
-            <img src="/img/vanillalatte.jpg" alt="VanillaLatte" class="img-fluid">
-            <div class="text-center py-2 recipe-name">
-                Vanilla Latte
-            </div>
+        @foreach ($recipes as $recipe)
+        <div class="col-4">
+            <a href="/recipedetail/{{$recipe->id}}">
+                <div class="recipe-img-box">
+                    <img src="/storage/{{$recipe->img}}" alt="{{$recipe->name}}" class="img-fluid">
+                    <p class="text-center py-2 recipe-name">
+                        {{$recipe->name}}
+                    </p>
+                </div>
+            </a>
         </div>
-        <div class="col-4 recipe-img-box">
-            <img src="/img/mocha.jpg" alt="Mocha" class="img-fluid">
-            <div class="text-center py-2 recipe-name">
-                Mocha
-            </div>
-        </div>
-        <div class="col-4 recipe-img-box">
-            <img src="/img/cappucino.jpg" alt="Cappucino" class="img-fluid">
-            <div class="text-center py-2 recipe-name">
-                Cappucino
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>

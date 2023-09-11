@@ -17,8 +17,9 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="recipe" role="tabpanel" aria-labelledby="recipe-tab">
-            @include('recipe')</div>
-        <div class="tab-pane fade" id="brew" role="tabpanel" aria-labelledby="brew-tab">@include('brew')</div>
+            @include('guides.recipe', ['recipes' => $recipes])</div>
+        <div class="tab-pane fade" id="brew" role="tabpanel" aria-labelledby="brew-tab">@include('guides.brew', ['brews'
+            => $brews])</div>
     </div>
 </div>
 
