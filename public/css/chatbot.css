@@ -1,13 +1,10 @@
 /* chat open and close */
-body {
-    min-width: 332px;
-}
-
 .chat-bar-open {
     text-align: center;
     position: fixed;
     bottom: 20px;
     right: 50px;
+    z-index: 10;
 }
 .chat-bar-open i {
     font-size: 30px;
@@ -23,6 +20,7 @@ body {
     position: fixed;
     bottom: 20px;
     right: 50px;
+    z-index: 10;
 }
 .chat-bar-open .close,
 .chat-bar-close .close {
@@ -54,7 +52,7 @@ body {
 /* chat window 2 */
 .chat-window {
     display: none;
-    min-width: 332px;
+    width: 332px;
     height: 400px;
     border-radius: 10px;
     background-color: #fff;
@@ -236,5 +234,20 @@ body {
     }
     40% {
         bottom: 0px;
+    }
+}
+
+@media screen and (max-width: 401px) {
+    .chat-window {
+        right: 14px;
+        bottom: 87px;
+    }
+    .chat-bar-open {
+        bottom: 20px;
+        right: 21px;
+    }
+    .chat-bar-close {
+        bottom: 21px;
+        right: 25px;
     }
 }

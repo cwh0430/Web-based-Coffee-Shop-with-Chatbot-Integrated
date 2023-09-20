@@ -1,8 +1,12 @@
 <?php
 
 use App\Http\Controllers\GuidingController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RateReviewController;
 use App\Models\ProductCart;
 use App\Models\RecipeGuide;
+use App\Http\Controllers\Auth\LoginController;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\BeverageController;
@@ -23,6 +27,14 @@ use App\Http\Controllers\HomebrewProductController;
 |
 */
 
+
+Route::get('login', [Auth\LoginController::class,'showLoginForm'])->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Registration Routes...
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
 Route::get('/', function () {
     return view('homepage');
 });
@@ -60,16 +72,20 @@ Route::post("/updateproductcart", [ProductCartController::class, 'updateProductC
 Route::post("/deleteproductcart/{id}", [ProductCartController::class, 'deleteProductCart']);
 
 //stripe beverage payment
+
 Route::post("/checkout", [PaymentController::class, 'checkout'])->name('checkout');
 Route::get("/success", [PaymentController::class, 'success'])->name('checkout.success');
 Route::get("/cancel", [PaymentController::class, 'cancel'])->name('checkout.cancel');
 //stripe webhook
 //Route::post('/webhook/stripe', [PaymentController::class, 'webhook']);
 
-Route::get('/embeddings', [EmbeddingController::class, 'extractDataFromCSV']);
 Route::post('/embeddings', [EmbeddingController::class, 'store']);
 
 Route::get('/guide', [GuidingController::class, 'index']);
 
 Route::get('/recipedetail/{id}', [GuidingController::class, 'recipeShow']);
 Route::get('/brewdetail/{id}', [GuidingController::class, 'brewShow']);
+
+Route::get('/orders', [OrderController::class, 'index'])->middleware('auth');
+
+Route::post('/review', [RateReviewController::class, 'store'])->name('review.store');

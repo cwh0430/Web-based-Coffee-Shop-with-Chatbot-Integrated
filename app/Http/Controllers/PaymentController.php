@@ -98,8 +98,6 @@ class PaymentController extends Controller
       'customer_creation' => 'always',
     ]);
 
-    // dd($item['price_data']['product_data']['metadata']['beverage_id']);
-
     $order = new Order();
     $order->total_price = $totalPrice;
     $order->status = 'unpaid';
@@ -132,20 +130,16 @@ class PaymentController extends Controller
     }
     $customer = $stripe->customers->retrieve($session->customer);
 
-
     $order = Order::where(['session_id' => $session->id])->whereIn('status', ['unpaid', 'paid'])->first();
     if (!$order) {
       return view('payment.failure', ['message' => 'Order does not exist']);
     }
-
 
     if ($order->status == 'unpaid') {
       $this->updateOrderSuccess($order, $customer);
     }
 
     $this->sendOrderConfirmationEmail($order, $customer->name);
-
-
 
     return view('payment.success');
 

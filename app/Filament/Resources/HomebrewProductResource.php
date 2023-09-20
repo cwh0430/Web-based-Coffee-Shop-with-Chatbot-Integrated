@@ -20,7 +20,7 @@ class HomebrewProductResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
-    protected static ?string $navigationGroup = 'Stocking Manage';
+    protected static ?string $navigationGroup = 'Product Management';
 
     public static function form(Form $form): Form
     {

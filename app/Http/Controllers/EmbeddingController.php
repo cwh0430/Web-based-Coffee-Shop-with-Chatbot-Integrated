@@ -37,16 +37,11 @@ class EmbeddingController extends Controller
         $question = $req->question;
 
         try {
-            //convert  input into vector
             $vectorService = new VectorService;
             $questionVector = $vectorService->generateEmbedding($question);
-            // Instantiate the VectorService class
             $relevantChunks = $vectorService->getMostSimilarVectors($questionVector);
-            //$texts = $vectorService->getTextsFromIds(collect($relevantChunks)->pluck('id'));
             $similarTexts = $vectorService->getTextsFromIds(array_column($relevantChunks, 'id'));
-            // Combine the relevant texts into a single string as the knowledge base
             $context = implode(' ', $similarTexts);
-            // Construct the prompt as a question and knowledge base
 
             $responses = $this->askQuestionStreamed($context, $question);
             $resultText = "";

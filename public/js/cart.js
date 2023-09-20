@@ -1,7 +1,11 @@
 function addQuantity(index) {
     var quantityInput = document.getElementById("quantity-input-" + index);
+    var responsiveQuantityInput = document.getElementById(
+        "quantity-input-" + index + "-responsive"
+    );
     var initialQuantity = parseInt(quantityInput.value);
     quantityInput.value = initialQuantity + 1;
+    responsiveQuantityInput.value = quantityInput.value;
     var newQuantity = parseInt(quantityInput.value);
     var quantity = newQuantity - initialQuantity;
     var modelType = quantityInput.getAttribute("model-type");
@@ -48,9 +52,13 @@ function addQuantity(index) {
 
 function minusQuantity(index) {
     var quantityInput = document.getElementById("quantity-input-" + index);
+    var responsiveQuantityInput = document.getElementById(
+        "quantity-input-" + index + "-responsive"
+    );
     if (quantityInput.value > quantityInput.min) {
         var initialQuantity = parseInt(quantityInput.value);
         quantityInput.value = initialQuantity - 1;
+        responsiveQuantityInput.value = quantityInput.value;
         var newQuantity = parseInt(quantityInput.value);
         var quantity = newQuantity - initialQuantity;
 
@@ -108,7 +116,11 @@ function minusQuantity(index) {
 
 function userAddQuantity(index) {
     var quantityInput = document.getElementById("quantity-input-" + index);
+    var responsiveQuantityInput = document.getElementById(
+        "quantity-input-" + index + "-responsive"
+    );
     quantityInput.value = parseInt(quantityInput.value) + 1;
+    responsiveQuantityInput.value = quantityInput.value;
     var quantity = quantityInput.value;
     var modelType = quantityInput.getAttribute("model-type");
 
@@ -137,10 +149,10 @@ function userAddQuantity(index) {
             quantity: quantity,
         },
         success: function (response) {
+            console.log(response.itemSubTotal);
             var totalPrice = document.getElementById("total-price-" + index);
             var subTotal = document.getElementById("subtotal");
             var modalSubTotal = document.getElementById(modalTotal);
-
             totalPrice.textContent = "RM " + response.itemSubTotal.toFixed(2);
             subTotal.textContent = "RM " + response.subTotal.toFixed(2);
             modalSubTotal.textContent = "RM " + response.subTotal.toFixed(2);
@@ -153,10 +165,19 @@ function userAddQuantity(index) {
 }
 
 function userMinusQuantity(index) {
+    var numberFormatter = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "MYR", // Malaysian Ringgit
+        minimumFractionDigits: 2,
+    });
     var quantityInput = document.getElementById("quantity-input-" + index);
+    var responsiveQuantityInput = document.getElementById(
+        "quantity-input-" + index + "-responsive"
+    );
     if (quantityInput.value > quantityInput.min) {
         var quantityInput = document.getElementById("quantity-input-" + index);
         quantityInput.value = parseInt(quantityInput.value) - 1;
+        responsiveQuantityInput.value = quantityInput.value;
         var quantity = parseInt(quantityInput.value);
         var modelType = quantityInput.getAttribute("model-type");
 

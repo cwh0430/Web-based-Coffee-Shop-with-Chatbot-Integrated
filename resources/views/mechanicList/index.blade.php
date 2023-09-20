@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="bg-white">
+<body>
 
     <div class="container-fluid mt-5 mb-5">
 

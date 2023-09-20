@@ -13,7 +13,7 @@
     <script src="/node_modules/@fortawesome/fontawesome-free/js/all.min.js"></script>
 </head>
 
-<body>
+<body style="min-width:375px;">
 
     <!-- chat open -->
     <div class="chat-bar-open" id="chat-open">

@@ -110,7 +110,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="search-input" class="form-label">Search:</label>
-                        <input type="text" class="form-control" id="search-input" name="search" required>
+                        <input type="text" class="form-control" id="search-input" name="search">
                     </div>
 
                     @if (request('min_price') && request('max_price') && request('max_price') !== '' &&

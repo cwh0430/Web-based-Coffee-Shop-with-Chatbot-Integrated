@@ -2,8 +2,9 @@
 
 namespace App\Exceptions;
 
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Exception;
 use Throwable;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
 {
@@ -44,5 +45,19 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+    }
+
+    // protected function render($request, Exception $exception)
+    // {
+    //     // if ($exception instanceof MethodNotAllowedHttpException) {
+    //     //     return $this->handleStripeError();
+    //     // }
+
+    //     // return parent::render($request, $exception);
+    // }
+
+    public function handleStripeError()
+    {
+        return redirect()->back();
     }
 }

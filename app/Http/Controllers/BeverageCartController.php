@@ -135,9 +135,7 @@ class BeverageCartController extends Controller
         } else {
             $user = auth()->user();
             $beverageCart = $user->beverageCart;
-
             $beverage = Beverage::find($beverageId);
-
 
             if ($beverage) {
 
@@ -148,7 +146,6 @@ class BeverageCartController extends Controller
 
                 if ($existingCartItem) {
                     // Item with the same beverage exists in the cart, update the quantity
-
                     $newQuantity = $existingCartItem->pivot->quantity + $quantity;
 
                     $beverageCart->beverage()->newPivotStatement()

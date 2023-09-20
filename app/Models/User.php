@@ -52,4 +52,9 @@ class User extends Authenticatable
         return $this->hasOne(BeverageCart::class);
     }
 
+    public function rateReview()
+    {
+        return $this->hasMany(RateReview::class);
+    }
+
 }

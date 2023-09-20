@@ -103,13 +103,14 @@ class ProductCartController extends Controller
                 return redirect()->back()->with('msg', 'Product Not Found');
             }
         } else {
-            $user = auth()->user();
-            $productCart = $user->productCart;
 
             //1. check whether the user have product cart(if yes, use existing cart, if no, create new cart)
             //2. check whether the product exist in its own model(if yes, proceed, if no, return not found)
             //3. check the product type(if homebrew, use homebrew model, if mechanic, use mechanic model, else return error code)
             //4. check whether the product exist in the product cart model (if exist, update quantity only, if no, add into the cart)
+
+            $user = auth()->user();
+            $productCart = $user->productCart;
 
             if ($modelType === "HomebrewProduct") {
                 $id = $req->homebrewProduct_id;
@@ -128,7 +129,6 @@ class ProductCartController extends Controller
 
             if ($productItem) {
                 $exist = $productCart->related->where('productable_id', $productItem->id)->where('productable_type', $productType)->first();
-                //$productCart->related->where('productable_id',$homebrew_id)->where('productable_type', $productType)->first();
                 if ($exist) {
                     $initialQuantity = $exist->quantity;
                     $newQuantity = $initialQuantity + $quantity;

@@ -197,7 +197,7 @@
                                     @csrf
                                 </form>
 
-                                <a href="" class="dropdown-item">
+                                <a href="/orders" class="dropdown-item">
                                     View My Orders
                                 </a>
                             </div>

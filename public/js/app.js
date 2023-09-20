@@ -55,7 +55,7 @@ function loadProductCartModal() {
 
                 cartItemList.innerHTML = htmlContent;
             } else {
-                htmlContent = `<div class="empty-msg">Your Cart Is Empty</div>`;
+                htmlContent = `<div class="empty-msg">Your Product Cart Is Empty</div>`;
                 count.classList.add("hidden");
                 responsiveCount.classList.add("hidden");
                 orderSubTotal.innerHTML = "RM0";
@@ -110,7 +110,7 @@ function loadBeverageCartModal() {
 
                 cartItemList.innerHTML = htmlContent;
             } else {
-                htmlContent = `<div class="empty-msg">Your Cart Is Empty</div>`;
+                htmlContent = `<div class="empty-msg">Your Beverage Cart Is Empty</div>`;
                 count.classList.add("hidden");
                 responsiveCount.classList.add("hidden");
                 orderSubTotal.innerHTML = "RM0";

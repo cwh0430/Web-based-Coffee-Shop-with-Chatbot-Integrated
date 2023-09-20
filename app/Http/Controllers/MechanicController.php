@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Mechanic;
-use App\Models\MechanicCategory;
+use App\Models\RateReview;
 use Illuminate\Http\Request;
+use App\Models\MechanicCategory;
 
 class MechanicController extends Controller
 {
@@ -50,12 +51,33 @@ class MechanicController extends Controller
     public function show($id)
     {
         $mechanic = Mechanic::findorFail($id);
+        $total = 0;
+        $averageRating = 0;
+        $reviews = RateReview::whereHas('related', function ($query) use ($mechanic) {
+            $query->where('reviewable_id', $mechanic->id)
+                ->where('reviewable_type', get_class($mechanic));
+        })->with('related')->get();
+
+        foreach ($reviews as $key => $review) {
+
+            $reviewable = $reviews[$key]->related;
+            $total = $reviewable->sum(function ($r) {
+                return $r->rating;
+            });
+
+
+        }
+
+        if (count($reviews)) {
+            $averageRating = round($total / count($reviews));
+        }
+
 
         $recommendations = Mechanic::where('mechanic_category_id', $mechanic->mechanic_category_id)
             ->where('id', '!=', $id) // Exclude the beverage with the given ID
             ->inRandomOrder()
             ->limit(3)
             ->get();
-        return view("mechanicList.show", ['mechanic' => $mechanic, 'recommendations' => $recommendations]);
+        return view("mechanicList.show", ['mechanic' => $mechanic, 'recommendations' => $recommendations, 'reviews' => $reviews, 'averageRating' => $averageRating]);
     }
 }

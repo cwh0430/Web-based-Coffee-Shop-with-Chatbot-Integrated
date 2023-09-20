@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RateReview;
+use Illuminate\Http\Request;
 use App\Models\HomebrewProduct;
 use App\Models\HomebrewProductCategory;
-use Illuminate\Http\Request;
 
 class HomebrewProductController extends Controller
 {
@@ -51,11 +52,33 @@ class HomebrewProductController extends Controller
     {
         $homebrewProduct = HomebrewProduct::findorFail($id);
 
+        $total = 0;
+        $averageRating = 0;
+        $reviews = RateReview::whereHas('related', function ($query) use ($homebrewProduct) {
+            $query->where('reviewable_id', $homebrewProduct->id)
+                ->where('reviewable_type', get_class($homebrewProduct));
+        })->with('related')->get();
+
+        foreach ($reviews as $key => $review) {
+
+            $reviewable = $reviews[$key]->related;
+            $total = $reviewable->sum(function ($r) {
+                return $r->rating;
+            });
+
+
+        }
+
+        if (count($reviews)) {
+            $averageRating = round($total / count($reviews));
+        }
+
+
         $recommendations = HomebrewProduct::where('homebrew_product_category_id', $homebrewProduct->homebrew_product_category_id)
             ->where('id', '!=', $id)
             ->inRandomOrder()
             ->limit(3)
             ->get();
-        return view('homebrewProductList.show', ['homebrewProduct' => $homebrewProduct, 'recommendations' => $recommendations]);
+        return view('homebrewProductList.show', ['homebrewProduct' => $homebrewProduct, 'recommendations' => $recommendations, 'reviews' => $reviews, 'averageRating' => $averageRating]);
     }
 }

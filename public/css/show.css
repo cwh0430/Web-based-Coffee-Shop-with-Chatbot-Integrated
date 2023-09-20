@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600&display=swap");
 
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 .size-select {
     min-width: 150px;
 }
@@ -62,38 +66,6 @@
     border-radius: 20px;
     cursor: pointer;
     margin-bottom: 5px;
-}
-
-/* Individual bars */
-.bar-5 {
-    width: 70%;
-    height: 13px;
-    background-color: #fbc02d;
-    border-radius: 20px;
-}
-.bar-4 {
-    width: 30%;
-    height: 13px;
-    background-color: #fbc02d;
-    border-radius: 20px;
-}
-.bar-3 {
-    width: 20%;
-    height: 13px;
-    background-color: #fbc02d;
-    border-radius: 20px;
-}
-.bar-2 {
-    width: 10%;
-    height: 13px;
-    background-color: #fbc02d;
-    border-radius: 20px;
-}
-.bar-1 {
-    width: 0%;
-    height: 13px;
-    background-color: #fbc02d;
-    border-radius: 20px;
 }
 
 .size-select {
@@ -281,7 +253,7 @@
     }
 
     .container-fluid {
-        min-width: 400px;
+        min-width: 375px;
     }
 }
 

@@ -5,9 +5,9 @@
 
 <div class="container-fluid mt-5">
 
-    {{-- @if (session('msg'))
+    @if (session('msg'))
     <p>{{session('msg')}}</p>
-    @endif --}}
+    @endif
     <!-- Sample Beverage Detail Page Content -->
     <div class="col-lg-12 col-xl-12 ">
         <form action="/addbeveragecart" method="POST">
@@ -128,28 +128,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Nutritional Information
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    Calories: around 250-300 kcal<br>
-                                    Total Fat: 9-12 grams<br>
-                                    Saturated Fat: 6-8 grams<br>
-                                    Cholesterol: 25-35 mg<br>
-                                    Sodium: 130-150 mg<br>
-                                    Total Carbohydrates: 32-40 grams<br>
-                                    Dietary Fiber: 0 grams<br>
-                                    Sugars: 30-35 grams<br>
-                                    Protein: 8-10 grams<br>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -159,130 +138,108 @@
         <div class="row ratings-reviews mt-5 justify-content-center">
             <div class="col-9">
                 <h3 class="text-center mb-4">Ratings and Reviews</h3>
-
                 <div>
                     <div class="row justify-content-center align-items-center d-flex text-center py-3"
                         style="border: 1px solid black;">
                         <div class="col-md-5 d-flex flex-column">
-                            <p class="pt-1 rating-avg">4.0</p>
+                            <p class="pt-1 rating-avg">{{number_format($averageRating,1,
+                                '.')}}</p>
                             <div>
-                                <span class="fa fa-star star-active mx-1"></span>
-                                <span class="fa fa-star star-active mx-1"></span>
-                                <span class="fa fa-star star-active mx-1"></span>
-                                <span class="fa fa-star star-active mx-1"></span>
-                                <span class="fa fa-star star-inactive mx-1"></span>
+                                @for ($i = 0; $i < $averageRating; $i++) <span class="fa fa-star star-active">
+                                    </span>
+                                    @endfor
+
+                                    @for ($i = $averageRating; $i < 5; $i++) <span class="fa fa-star star-inactive">
+                                        </span>
+                                        @endfor
                             </div>
-                            <p class="text-muted justify-content-center">123 ratings</p>
-
-                        </div>
-
-
-                        <div class="col-md-7">
-                            <div class="rating-bar0 justify-content-center">
-                                <table class="text-left mx-auto">
-                                    <tr>
-                                        <td class="rating-label">5</td>
-                                        <td class="rating-bar">
-                                            <div class="bar-container">
-                                                <div class="bar-5"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">123</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="rating-label">4</td>
-                                        <td class="rating-bar">
-                                            <div class="bar-container">
-                                                <div class="bar-4"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">23</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="rating-label">3</td>
-                                        <td class="rating-bar">
-                                            <div class="bar-container">
-                                                <div class="bar-3"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">10</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="rating-label">2</td>
-                                        <td class="rating-bar">
-                                            <div class="bar-container">
-                                                <div class="bar-2"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">3</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="rating-label">1</td>
-                                        <td class="rating-bar">
-                                            <div class="bar-container">
-                                                <div class="bar-1"></div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">0</td>
-                                    </tr>
-                                </table>
+                            <p class="text-muted justify-content-center">{{count($reviews)}} ratings</p>
+                            @auth
+                            <div style="width: 100%">
+                                <button type="button" class=" text-muted btn text-center mx-auto" style="width: 30%;"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    Write a review
+                                </button>
                             </div>
+
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Rate and Review</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form action="{{route('review.store')}}" method="POST" id="review-form">
+                                                @csrf
+                                                <p>{{$beverage->name}} Review Form</p>
+                                                <div class="mb-3">
+
+                                                    <div class="ratings">
+                                                        <input type="hidden" value=0 id="rating" name="rating">
+                                                        <input type="hidden" name="modelType" value="Beverage">
+                                                        <input type="hidden" name="product_id"
+                                                            value="{{$beverage->id}}">
+                                                        @for ($i = 1; $i <= 5; $i++) <span class="star"
+                                                            data-rating="{{ $i }}">
+                                                            <span class="fa fa-star star-inactive mx-1"
+                                                                id="star-{{$i}}"></span>
+                                                            </span>
+                                                            @endfor
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <textarea class="form-control" id="comment" name="comment" rows="4"
+                                                        placeholder="Leave out Your Comment" required></textarea>
+                                                </div>
+
+                                                <button type="submit" class="btn add-to-cart">Submit</button>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            @endauth
                         </div>
 
                         <hr class="my-3">
+                        @foreach ($reviews as $review)
+                        @foreach ($review->related as $comments)
                         <div class="col-md-11">
                             <div class="row">
                                 <div class="col-md-12 text-start mb-3">
                                     <div class="row">
                                         <span class="stars">
-                                            <span class="fa fa-star star-active"></span>
-                                            <span class="fa fa-star star-active"></span>
-                                            <span class="fa fa-star star-active"></span>
-                                            <span class="fa fa-star star-active"></span>
-                                            <span class="fa fa-star star-inactive"></span>
+                                            @for ($i = 0; $i < $comments->rating; $i++) <span
+                                                    class="fa fa-star star-active">
+                                                </span>
+                                                @endfor
+
+                                                @for ($i = $comments->rating; $i < 5; $i++) <span
+                                                    class="fa fa-star star-inactive"></span>
+                                        @endfor
                                         </span>
-                                        <p class="mb-0 client-name text-muted">Vikram jit Singh </p>
+                                        <p class="mb-0 client-name text-muted">{{$review->user->name}}</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p class="content text-start">If you really enjoy coffee or would like to try
-                                        something
-                                        new and
-                                        exciting for the first time.</p>
+                                    <p class="content text-start">{{$comments->comment}}</p>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+                        @endforeach
                         <hr class="my-3">
 
-                        <div class="col-md-11">
-                            <div class="row">
-                                <div class="col-md-12 text-start mb-3">
-                                    <div class="row">
-                                        <span class="stars">
-                                            <span class="fa fa-star star-active"></span>
-                                            <span class="fa fa-star star-active"></span>
-                                            <span class="fa fa-star star-active"></span>
-                                            <span class="fa fa-star star-active"></span>
-                                            <span class="fa fa-star star-inactive"></span>
-                                        </span>
-                                        <p class="mb-0 client-name text-muted">Vikram jit Singh </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="content text-start">If you really enjoy coffee or would like to try
-                                        something
-                                        new and
-                                        exciting for the first time.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <hr class="my-3">
 
                     </div>
                 </div>

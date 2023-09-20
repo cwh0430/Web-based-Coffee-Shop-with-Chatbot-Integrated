@@ -1,0 +1,19 @@
+.text-unpaid-outline {
+    color: red;
+    background-color: transparent;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 7px 15px;
+    margin-bottom: 0 !important;
+    margin-left: 5px;
+}
+
+.text-paid-outline {
+    color: green;
+    background-color: transparent;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 7px 15px;
+    margin-bottom: 0 !important;
+    margin-left: 5px;
+}

@@ -10,9 +10,12 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('rate_reviews', function (Blueprint $table) {
+        Schema::create('reviewables', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('rate_review_id')->references('id')->on('rate_reviews')->onDelete('cascade');
+            $table->morphs('reviewable');
+            $table->integer('rating');
+            $table->longText('comment');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('rate_reviews');
+        Schema::dropIfExists('reviewables');
     }
 };
