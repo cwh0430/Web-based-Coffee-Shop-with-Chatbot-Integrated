@@ -236,9 +236,10 @@
                                 </div>
                             </div>
                         </div>
-                        @endforeach
-                        @endforeach
                         <hr class="my-3">
+
+                        @endforeach
+                        @endforeach
 
 
                     </div>

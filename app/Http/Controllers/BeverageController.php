@@ -52,6 +52,7 @@ class BeverageController extends Controller
         $beverage = Beverage::findorFail($id);
         $total = 0;
         $averageRating = 0;
+
         $reviews = RateReview::whereHas('related', function ($query) use ($beverage) {
             $query->where('reviewable_id', $beverage->id)
                 ->where('reviewable_type', get_class($beverage));
@@ -60,7 +61,7 @@ class BeverageController extends Controller
         foreach ($reviews as $key => $review) {
 
             $reviewable = $reviews[$key]->related;
-            $total = $reviewable->sum(function ($r) {
+            $total += $reviewable->sum(function ($r) {
                 return $r->rating;
             });
 
@@ -69,6 +70,7 @@ class BeverageController extends Controller
 
         if (count($reviews)) {
             $averageRating = round($total / count($reviews));
+
         }
 
         $recommendations = Beverage::where('beverage_category_id', $beverage->beverage_category_id)

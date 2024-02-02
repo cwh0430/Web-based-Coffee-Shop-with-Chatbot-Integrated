@@ -179,7 +179,6 @@ class BeverageCartController extends Controller
             $beverageCart = Cart::session($guestIdentifier)->getContent()->sortBy('price');
             $subTotal = Cart::session($guestIdentifier)->getSubTotal();
 
-
             return view('beverageCart.index', ['beverageCart' => $beverageCart, 'subTotal' => $subTotal]);
         } else {
 

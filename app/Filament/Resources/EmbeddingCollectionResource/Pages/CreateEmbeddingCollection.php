@@ -27,7 +27,6 @@ class CreateEmbeddingCollection extends CreateRecord
             $this->halt();
         }
     }
-
     protected function afterCreate()
     {
         $newCollection = EmbeddingCollection::first();
